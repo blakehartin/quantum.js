@@ -5,7 +5,8 @@ output/**
 **/*.swp
 **/*.tgz
 dist/*.gz
-
+.idea
+.vscode
 **/.DS_Store
 
 .iterm2-project
