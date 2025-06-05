@@ -1,5 +1,5 @@
-The Ethers Project
-==================
+The quantum.js project
+=======================
 
 [![npm (tag)](https://img.shields.io/npm/v/ethers)](https://www.npmjs.com/package/ethers)
 [![CI Tests](https://github.com/ethers-io/ethers.js/actions/workflows/test-ci.yml/badge.svg?branch=main)](https://github.com/ethers-io/ethers.js/actions/workflows/test-ci.yml)
@@ -74,7 +74,7 @@ The bundled library is available in the `./dist/` folder in this repo.
 
 ```
 <script type="module">
-    import { ethers } from "./dist/ethers.min.js";
+    import { ethers } from "./dist/quantum.min.js";
 </script>
 ```
 

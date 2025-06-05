@@ -2,7 +2,7 @@
  *
  *
  *  Paths
- *  /index.js => dist/ethers.js
+ *  /index.js => dist/quantum.js
  *  /tests/utils.js => in-memory hijack
  *  /static/* => output/*
  *    - index.html

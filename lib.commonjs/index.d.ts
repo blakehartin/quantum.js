@@ -5,7 +5,7 @@
  *  @_section: api:Application Programming Interface  [about-api]
  *  @_navTitle: API
  */
-import * as ethers from "./ethers.js";
+import * as ethers from "./quantum.js";
 export { ethers };
-export * from "./ethers.js";
+export * from "./quantum.js";
 //# sourceMappingURL=index.d.ts.map

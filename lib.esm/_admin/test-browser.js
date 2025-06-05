@@ -2,7 +2,7 @@
  *
  *
  *  Paths
- *  /index.js => dist/ethers.js
+ *  /index.js => dist/quantum.js
  *  /tests/utils.js => in-memory hijack
  *  /static/* => output/*
  *    - index.html
@@ -241,11 +241,11 @@ export function start(_root, options) {
         if (url === "/") {
             filename = "./misc/test-browser/index.html";
         }
-        else if (url === "/ethers.js" || url === "/index.js") {
-            filename = "./dist/ethers.js";
+        else if (url === "/quantum.js" || url === "/index.js") {
+            filename = "./dist/quantum.js";
         }
-        else if (url === "/ethers.js.map") {
-            filename = "./dist/ethers.js.map";
+        else if (url === "/quantum.js.map") {
+            filename = "./dist/quantum.js.map";
         }
         else if (url.startsWith("/static/")) {
             filename = "./misc/test-browser/" + url.substring(8);
