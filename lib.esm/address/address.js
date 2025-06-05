@@ -3,17 +3,17 @@ import { getBytes, assertArgument } from "../utils/index.js";
 const BN_0 = BigInt(0);
 const BN_36 = BigInt(36);
 function getChecksumAddress(address) {
-    //    if (!isHexString(address, 20)) {
+    //    if (!isHexString(address, 32)) {
     //        logger.throwArgumentError("invalid address", "address", address);
     //    }
     address = address.toLowerCase();
     const chars = address.substring(2).split("");
-    const expanded = new Uint8Array(40);
-    for (let i = 0; i < 40; i++) {
+    const expanded = new Uint8Array(64);
+    for (let i = 0; i < 64; i++) {
         expanded[i] = chars[i].charCodeAt(0);
     }
     const hashed = getBytes(keccak256(expanded));
-    for (let i = 0; i < 40; i += 2) {
+    for (let i = 0; i < 64; i += 2) {
         if ((hashed[i >> 1] >> 4) >= 8) {
             chars[i] = chars[i].toUpperCase();
         }
@@ -105,7 +105,7 @@ function fromBase36(value) {
  */
 export function getAddress(address) {
     assertArgument(typeof (address) === "string", "invalid address", "address", address);
-    if (address.match(/^(0x)?[0-9a-fA-F]{40}$/)) {
+    if (address.match(/^(0x)?[0-9a-fA-F]{64}$/)) {
         // Missing the 0x prefix
         if (!address.startsWith("0x")) {
             address = "0x" + address;
@@ -120,7 +120,7 @@ export function getAddress(address) {
         // It is an ICAP address with a bad checksum
         assertArgument(address.substring(2, 4) === ibanChecksum(address), "bad icap checksum", "address", address);
         let result = fromBase36(address.substring(4)).toString(16);
-        while (result.length < 40) {
+        while (result.length < 64) {
             result = "0" + result;
         }
         return getChecksumAddress("0x" + result);

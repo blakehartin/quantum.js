@@ -97,7 +97,7 @@ async function checkAddress(target, promise) {
  */
 export function resolveAddress(target, resolver) {
     if (typeof (target) === "string") {
-        if (target.match(/^0x[0-9a-f]{40}$/i)) {
+        if (target.match(/^0x[0-9a-f]{64}$/i)) {
             return getAddress(target);
         }
         assert(resolver != null, "ENS resolution requires a provider", "UNSUPPORTED_OPERATION", { operation: "resolveName" });

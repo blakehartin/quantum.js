@@ -7105,17 +7105,17 @@ function lock() {
 const BN_0$6 = BigInt(0);
 const BN_36 = BigInt(36);
 function getChecksumAddress(address) {
-    //    if (!isHexString(address, 20)) {
+    //    if (!isHexString(address, 32)) {
     //        logger.throwArgumentError("invalid address", "address", address);
     //    }
     address = address.toLowerCase();
     const chars = address.substring(2).split("");
-    const expanded = new Uint8Array(40);
-    for (let i = 0; i < 40; i++) {
+    const expanded = new Uint8Array(64);
+    for (let i = 0; i < 64; i++) {
         expanded[i] = chars[i].charCodeAt(0);
     }
     const hashed = getBytes(keccak256(expanded));
-    for (let i = 0; i < 40; i += 2) {
+    for (let i = 0; i < 64; i += 2) {
         if ((hashed[i >> 1] >> 4) >= 8) {
             chars[i] = chars[i].toUpperCase();
         }
@@ -7205,7 +7205,7 @@ function fromBase36(value) {
  */
 function getAddress(address) {
     assertArgument(typeof (address) === "string", "invalid address", "address", address);
-    if (address.match(/^(0x)?[0-9a-fA-F]{40}$/)) {
+    if (address.match(/^(0x)?[0-9a-fA-F]{64}$/)) {
         // Missing the 0x prefix
         if (!address.startsWith("0x")) {
             address = "0x" + address;
@@ -7220,7 +7220,7 @@ function getAddress(address) {
         // It is an ICAP address with a bad checksum
         assertArgument(address.substring(2, 4) === ibanChecksum(address), "bad icap checksum", "address", address);
         let result = fromBase36(address.substring(4)).toString(16);
-        while (result.length < 40) {
+        while (result.length < 64) {
             result = "0" + result;
         }
         return getChecksumAddress("0x" + result);
@@ -7417,7 +7417,7 @@ async function checkAddress(target, promise) {
  */
 function resolveAddress(target, resolver) {
     if (typeof (target) === "string") {
-        if (target.match(/^0x[0-9a-f]{40}$/i)) {
+        if (target.match(/^0x[0-9a-f]{64}$/i)) {
             return getAddress(target);
         }
         assert(resolver != null, "ENS resolution requires a provider", "UNSUPPORTED_OPERATION", { operation: "resolveName" });
@@ -26249,4 +26249,4 @@ var quantum = /*#__PURE__*/Object.freeze({
 });
 
 export { AbiCoder, AbstractProvider, AbstractSigner, AlchemyProvider, AnkrProvider, BaseContract, BaseWallet, Block, BlockscoutProvider, BrowserProvider, ChainstackProvider, CloudflareProvider, ConstructorFragment, Contract, ContractEventPayload, ContractFactory, ContractTransactionReceipt, ContractTransactionResponse, ContractUnknownEventPayload, EnsPlugin, EnsResolver, ErrorDescription, ErrorFragment, EtherSymbol, EtherscanPlugin, EtherscanProvider, EventFragment, EventLog, EventPayload, FallbackFragment, FallbackProvider, FeeData, FeeDataNetworkPlugin, FetchCancelSignal, FetchRequest, FetchResponse, FetchUrlFeeDataNetworkPlugin, FixedNumber, Fragment, FunctionFragment, GasCostPlugin, HDNodeVoidWallet, HDNodeWallet, Indexed, InfuraProvider, InfuraWebSocketProvider, Interface, IpcSocketProvider, JsonRpcApiProvider, JsonRpcProvider, JsonRpcSigner, LangEn, Log, LogDescription, MaxInt256, MaxUint256, MessagePrefix, MinInt256, Mnemonic, MulticoinProviderPlugin, N$1 as N, NamedFragment, Network, NetworkPlugin, NonceManager, ParamType, PocketProvider, QuickNodeProvider, Result, Signature, SigningKey, SocketBlockSubscriber, SocketEventSubscriber, SocketPendingSubscriber, SocketProvider, SocketSubscriber, StructFragment, Transaction, TransactionDescription, TransactionReceipt, TransactionResponse, Typed, TypedDataEncoder, UndecodedEventLog, UnmanagedSubscriber, Utf8ErrorFuncs, VoidSigner, Wallet, WebSocketProvider, WeiPerEther, Wordlist, WordlistOwl, WordlistOwlA, ZeroAddress, ZeroHash, accessListify, assert, assertArgument, assertArgumentCount, assertNormalize, assertPrivate, authorizationify, checkResultErrors, computeAddress, computeHmac, concat, copyRequest, dataLength, dataSlice, decodeBase58, decodeBase64, decodeBytes32String, decodeRlp, decryptCrowdsaleJson, decryptKeystoreJson, decryptKeystoreJsonSync, defaultPath, defineProperties, dnsEncode, encodeBase58, encodeBase64, encodeBytes32String, encodeRlp, encryptKeystoreJson, encryptKeystoreJsonSync, ensNormalize, quantum as ethers, formatEther, formatUnits, fromTwos, getAccountPath, getAddress, getBigInt, getBytes, getBytesCopy, getCreate2Address, getCreateAddress, getDefaultProvider, getIcapAddress, getIndexedAccountPath, getNumber, getUint, hashAuthorization, hashMessage, hexlify, id, isAddress, isAddressable, isBytesLike, isCallException, isCrowdsaleJson, isError, isHexString, isKeystoreJson, isValidName, keccak256, lock, makeError, mask, namehash, parseEther, parseUnits$1 as parseUnits, pbkdf2, randomBytes, recoverAddress, resolveAddress, resolveProperties, ripemd160, scrypt, scryptSync, sha256, sha512, showThrottleMessage, solidityPacked, solidityPackedKeccak256, solidityPackedSha256, stripZerosLeft, toBeArray, toBeHex, toBigInt, toNumber, toQuantity, toTwos, toUtf8Bytes, toUtf8CodePoints, toUtf8String, uuidV4, verifyAuthorization, verifyMessage, verifyTypedData, version, wordlists, zeroPadBytes, zeroPadValue };
-//# sourceMappingURL=ethers.js.map
+//# sourceMappingURL=quantum.js.map

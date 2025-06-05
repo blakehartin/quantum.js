@@ -105,7 +105,7 @@ async function checkAddress(target: any, promise: Promise<null | string>): Promi
 export function resolveAddress(target: AddressLike, resolver?: null | NameResolver): string | Promise<string> {
 
     if (typeof(target) === "string") {
-        if (target.match(/^0x[0-9a-f]{40}$/i)) { return getAddress(target); }
+        if (target.match(/^0x[0-9a-f]{64}$/i)) { return getAddress(target); }
 
         assert(resolver != null, "ENS resolution requires a provider",
             "UNSUPPORTED_OPERATION", { operation: "resolveName" });
