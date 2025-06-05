@@ -24,12 +24,12 @@ jobs:
       - name: Install TypeScript
         run: npm install --g typescript
 
-      - name: Build specs and website
+      - name: Build distribution
         run: |
           npm run build-all
           npm run build-dist
           ls
-          pw
+          pwd
 
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v4
