@@ -1,5 +1,5 @@
 {
-  "author": "Richard Moore <me@ricmoo.com>",
+  "author": "QuantumCoin Community",
   "browser": {
     "./lib.esm/crypto/crypto.js": "./lib.esm/crypto/crypto-browser.js",
     "./lib.esm/providers/provider-ipcsocket.js": "./lib.esm/providers/provider-ipcsocket-browser.js",
@@ -17,7 +17,7 @@
     "tslib": "2.7.0",
     "ws": "8.17.1"
   },
-  "description": "A complete and compact Ethereum library, for dapps, wallets and any other tools.",
+  "description": "A complete and compact QuantumCoin library, for dapps, wallets and any other tools.",
   "devDependencies": {
     "@rollup/plugin-node-resolve": "15.3.0",
     "@types/mocha": "10.0.9",
@@ -32,7 +32,6 @@
   "engines": {
     "node": ">=14.0.0"
   },
-  "ethereum": "donations.ethers.eth",
   "exports": {
     ".": {
       "import": "./lib.esm/index.js",
@@ -83,22 +82,14 @@
       "default": "./lib.commonjs/wordlists/index.js"
     }
   },
-  "funding": [
-    {
-      "type": "individual",
-      "url": "https://github.com/sponsors/ethers-io/"
-    },
-    {
-      "type": "individual",
-      "url": "https://www.buymeacoffee.com/ricmoo"
-    }
-  ],
   "gitHead": "135db722756b81f44f55441e1e2d24ef4f85f216",
-  "homepage": "https://ethers.org",
+  "homepage": "https://QuantumCoin.org",
   "keywords": [
     "ethereum",
     "ethers",
-    "ethersjs"
+    "ethersjs",
+    "quantumjs",
+    "quantumcoin"
   ],
   "license": "MIT",
   "main": "./lib.commonjs/index.js",
@@ -110,7 +101,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/ethers-io/ethers.js.git"
+    "url": "git://github.com/quantumcoinproject/quantum.js.git"
   },
   "scripts": {
     "_build-dist": "rollup -c && uglifyjs ./dist/ethers.js -o ./dist/ethers.min.js && uglifyjs ./dist/ethers.umd.js -o ./dist/ethers.umd.min.js && uglifyjs ./dist/wordlists-extra.js -o ./dist/wordlists-extra.min.js",
